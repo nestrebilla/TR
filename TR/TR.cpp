@@ -2,6 +2,7 @@
 //
 
 #include "pch.h"
+#include "Parser.h"
 #include "Robot.h" 
 #include <iostream>
 
@@ -10,18 +11,18 @@ using namespace TR;
 
 int main()
 {
-	CommandParser parser;
+	Parser parser;
 	Robot robot;
-	std::string line;
+	string line;
 
-	while (getline(std::cin, line)) {
+	while (getline(cin, line)) {
 		try {
 			Command cmd = parser(line);
 			robot.execute(cmd);
 		}
-		catch (const std::exception &e) {
+		catch (const exception &e) {
 			// Handle invalid commands gracefully
-			std::cerr << "Error: " << e.what() << std::endl;
+			cerr << "Error: " << e.what() << endl;
 		}
 	}
 	return 0;

@@ -4,7 +4,7 @@
 #include <string>
 
 namespace TR {
-	class CommandParser {
+	class Parser {
 	public:
 		Command operator()(const std::string &in_str);
 	};

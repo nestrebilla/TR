@@ -13,12 +13,12 @@ namespace TR {
 		int y;
 	};
 
-	enum class Commands { PLACE, MOVE, LEFT, RIGHT, REPORT };
+	enum class CommandType { PLACE, MOVE, LEFT, RIGHT, REPORT };
 
 	struct Command {
-		Commands command;
+		CommandType type;
 		Position pos;
-		FaceDirection facedir;
+		FaceDirection dir;
 	};
 
 } // namespace TR
