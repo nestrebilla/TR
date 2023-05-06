@@ -1,10 +1,22 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "../TR/Robot.h"
+#include "../TR/Robot.cpp"
 #include "../TR/Common.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace TR;
+
+namespace Microsoft {
+	namespace VisualStudio {
+		namespace CppUnitTestFramework {
+			template<>
+			static std::wstring ToString<FaceDirection>(const FaceDirection& f) {
+				return L"FaceDirection";
+			}
+		}
+	}
+}
 
 namespace TR_UnitTests
 {		
@@ -25,13 +37,79 @@ namespace TR_UnitTests
 			sut.Execute(command);
 
 			// Assert
-			/*Assert::AreEqual(pos, sut.getPosition());
-			Assert::AreEqual(FaceDirection::NORTH, sut.getFaceDirection());
-			Assert::AreEqual(true, sut.isPlaced());*/
-			Assert::AreEqual(sut.getPosition(), pos);
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y);
 			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
 			Assert::AreEqual(sut.isPlaced(), true);
 
+		}
+
+		TEST_METHOD(Should_Test_Valid_Initial_Position2)
+		{
+			// Setup
+			Position pos;
+			pos.x = 3;
+			pos.y = 4;
+			Command command = { CommandType::PLACE, pos, FaceDirection::WEST };
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::WEST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+		}
+
+		TEST_METHOD(Should_Test_Invalid_Initial_Position1)
+		{
+			// Setup
+			Position pos;
+			pos.x = -1;
+			pos.y = -1;
+			Command command = { CommandType::PLACE, pos, FaceDirection::SOUTH };
+
+			try
+			{	
+				// Define and run SUT
+				Robot sut;
+				sut.Execute(command);
+			}
+			catch (const std::exception& e) 
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid position"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
+		TEST_METHOD(Should_Test_Invalid_Initial_Position2)
+		{
+			// Setup
+			Position pos;
+			pos.x = 5;
+			pos.y = 3;
+			Command command = { CommandType::PLACE, pos, FaceDirection::EAST };
+
+			try
+			{
+				// Define and run SUT
+				Robot sut;
+				sut.Execute(command);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid position"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
 		}
 
 	};

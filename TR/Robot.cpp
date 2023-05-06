@@ -6,7 +6,7 @@ namespace TR {
 	void Robot::place(int x, int y, FaceDirection facedir) 
 	{
 		if (x < MIN_XLENGTH || x > MAX_XLENGTH || y < MIN_YLENGTH || y > MAX_YLENGTH) {
-			throw std::invalid_argument("Invalid position");
+			throw invalid_argument("Invalid position");
 		}
 
 		_isPlaced = true;
