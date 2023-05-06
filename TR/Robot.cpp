@@ -1,10 +1,3 @@
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <vector>
-
-#include "Parser.h"
 #include "Robot.h"
 
 using namespace std;

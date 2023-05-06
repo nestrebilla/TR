@@ -1,26 +1,41 @@
-#include <stdexcept>
-#include <string>
 #include "Parser.h"
-#include "Common.h"
 
 using namespace std;
 
 
 namespace TR {
-	Command Parser::operator()(const string &input) {
+
+	vector<string> Parser::tokenizeString(const std::string &input, char delimiter)
+	{
+		vector<string> tokens;
+		stringstream ss(input);
+		std::string token;
+
+		while (getline(ss, token, delimiter)) {
+			tokens.push_back(token);
+		}
+
+		return tokens;
+	}
+
+	Command Parser::operator()(const string &input) 
+	{
 		CommandType command;
 		Position pos;
 		FaceDirection facedirection = FaceDirection::NORTH;
 
-		string cmd = input.substr(0, input.find(' '));
+		vector<string> inputTokens = tokenizeString(input, ' ');
+		string cmd = inputTokens[0];
+
 		if (cmd == "PLACE") {
 			command = CommandType::PLACE;
+
 			// Parse the PLACE command arguments
-			pos.x = stoi(input.substr(input.find(' ') + 1,
-				input.rfind(',') - input.find(',') - 1));
-			pos.y = std::stoi(input.substr(input.find(',') + 1,
-				input.rfind(',') - input.find(',') - 1));
-			string dir_str = input.substr(input.rfind(',') + 1);
+			vector<string> placeAndDirectionInfo = tokenizeString(inputTokens[1], ',');
+			pos.x = stoi(placeAndDirectionInfo[0]);
+			pos.y = stoi(placeAndDirectionInfo[1]);
+			string dir_str = placeAndDirectionInfo[2];
+
 			if (dir_str == "NORTH") {
 				facedirection = FaceDirection::NORTH;
 			}
@@ -55,4 +70,5 @@ namespace TR {
 
 		return { command, pos, facedirection };
 	}
+
 } // namespace TR
