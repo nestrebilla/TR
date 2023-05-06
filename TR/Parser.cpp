@@ -7,20 +7,20 @@ using namespace std;
 
 
 namespace TR {
-	Command Parser::operator()(const string &in_str) {
+	Command Parser::operator()(const string &input) {
 		CommandType command;
 		Position pos;
 		FaceDirection facedirection = FaceDirection::NORTH;
 
-		string cmd = in_str.substr(0, in_str.find(' '));
+		string cmd = input.substr(0, input.find(' '));
 		if (cmd == "PLACE") {
 			command = CommandType::PLACE;
 			// Parse the PLACE command arguments
-			pos.x = stoi(in_str.substr(in_str.find(' ') + 1,
-				in_str.rfind(',') - in_str.find(',') - 1));
-			pos.y = std::stoi(in_str.substr(in_str.find(',') + 1,
-				in_str.rfind(',') - in_str.find(',') - 1));
-			string dir_str = in_str.substr(in_str.rfind(',') + 1);
+			pos.x = stoi(input.substr(input.find(' ') + 1,
+				input.rfind(',') - input.find(',') - 1));
+			pos.y = std::stoi(input.substr(input.find(',') + 1,
+				input.rfind(',') - input.find(',') - 1));
+			string dir_str = input.substr(input.rfind(',') + 1);
 			if (dir_str == "NORTH") {
 				facedirection = FaceDirection::NORTH;
 			}

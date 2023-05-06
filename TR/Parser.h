@@ -6,7 +6,7 @@
 namespace TR {
 	class Parser {
 	public:
-		Command operator()(const std::string &in_str);
+		Command operator()(const std::string &input);
 	};
 
 } // namespace TR
