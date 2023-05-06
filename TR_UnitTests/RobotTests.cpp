@@ -133,7 +133,7 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
-		TEST_METHOD(SShould_Test_Moving_Robot_To_Valid_Position2)
+		TEST_METHOD(Should_Test_Moving_Robot_To_Valid_Position2)
 		{
 			// Setup
 			Position pos;
