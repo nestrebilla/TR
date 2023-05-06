@@ -1,6 +1,5 @@
 #include <stdexcept>
 #include <string>
-
 #include "Parser.h"
 #include "Common.h"
 
