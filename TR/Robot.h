@@ -14,8 +14,8 @@ namespace TR {
 
 	private:
 		Position _pos;
-		FaceDirection _facedir;
-		bool _placed;
+		FaceDirection _faceDir;
+		bool _isPlaced;
 
 		void place(int x, int y, FaceDirection dir);
 		void move();
@@ -24,7 +24,10 @@ namespace TR {
 		void report() const;
 
 	public:
-		Robot() : _placed(false) {}
+		Robot() : _isPlaced(false) {}
+		Position getPosition() { return _pos; }
+		FaceDirection getFaceDirection() { return _faceDir; }
+		bool isPlaced() { return _isPlaced;  }
 
 		void Execute(Command cmd);
 	};

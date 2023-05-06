@@ -9,22 +9,22 @@ namespace TR {
 			throw std::invalid_argument("Invalid position");
 		}
 
-		_placed = true;
+		_isPlaced = true;
 		_pos.x = x;
 		_pos.y = y;
-		_facedir = facedir;
+		_faceDir = facedir;
 	}
 
 	void Robot::move() 
 	{
 
-		if (!_placed) {
+		if (!_isPlaced) {
 			return;
 		}
 
 		Position new_pos = _pos;
 
-		switch (_facedir) {
+		switch (_faceDir) {
 		case FaceDirection::NORTH:
 			new_pos.y++;
 			break;
@@ -49,53 +49,53 @@ namespace TR {
 
 	void Robot::left() 
 	{
-		if (!_placed) {
+		if (!_isPlaced) {
 			return;
 		}
 
-		switch (_facedir) {
+		switch (_faceDir) {
 		case FaceDirection::NORTH:
-			_facedir = FaceDirection::WEST;
+			_faceDir = FaceDirection::WEST;
 			break;
 		case FaceDirection::EAST:
-			_facedir = FaceDirection::NORTH;
+			_faceDir = FaceDirection::NORTH;
 			break;
 		case FaceDirection::SOUTH:
-			_facedir = FaceDirection::EAST;
+			_faceDir = FaceDirection::EAST;
 			break;
 		case FaceDirection::WEST:
-			_facedir = FaceDirection::SOUTH;
+			_faceDir = FaceDirection::SOUTH;
 			break;
 		}
 	}
 
 	void Robot::right() 
 	{
-		if (!_placed) {
+		if (!_isPlaced) {
 			return;
 		}
-		switch (_facedir) {
+		switch (_faceDir) {
 		case FaceDirection::NORTH:
-			_facedir = FaceDirection::EAST;
+			_faceDir = FaceDirection::EAST;
 			break;
 		case FaceDirection::EAST:
-			_facedir = FaceDirection::SOUTH;
+			_faceDir = FaceDirection::SOUTH;
 			break;
 		case FaceDirection::SOUTH:
-			_facedir = FaceDirection::WEST;
+			_faceDir = FaceDirection::WEST;
 			break;
 		case FaceDirection::WEST:
-			_facedir = FaceDirection::NORTH;
+			_faceDir = FaceDirection::NORTH;
 			break;
 		}
 	}
 
 	void Robot::report() const {
-		if (!_placed) {
+		if (!_isPlaced) {
 			return;
 		}
 		cout << "Output: " << _pos.x << "," << _pos.y << ",";
-		switch (_facedir) {
+		switch (_faceDir) {
 		case FaceDirection::NORTH:
 			cout << "NORTH";
 			break;
