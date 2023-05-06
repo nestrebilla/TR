@@ -24,7 +24,7 @@ namespace TR_UnitTests
 	{
 	public:
 		
-		TEST_METHOD(Should_Test_Valid_Initial_Position1)
+		TEST_METHOD(Should_Test_Placing_Robot_In_Valid_Position1)
 		{
 			// Setup
 			Position pos;
@@ -44,7 +44,7 @@ namespace TR_UnitTests
 
 		}
 
-		TEST_METHOD(Should_Test_Valid_Initial_Position2)
+		TEST_METHOD(Should_Test_Placing_Robot_In_Valid_Position2)
 		{
 			// Setup
 			Position pos;
@@ -64,7 +64,7 @@ namespace TR_UnitTests
 
 		}
 
-		TEST_METHOD(Should_Test_Invalid_Initial_Position1)
+		TEST_METHOD(Should_Test_Placing_Robot_In_Invalid_Position1)
 		{
 			// Setup
 			Position pos;
@@ -88,7 +88,7 @@ namespace TR_UnitTests
 			Assert::Fail();
 		}
 
-		TEST_METHOD(Should_Test_Invalid_Initial_Position2)
+		TEST_METHOD(Should_Test_Placing_Robot_In_Invalid_Position2)
 		{
 			// Setup
 			Position pos;
@@ -112,7 +112,7 @@ namespace TR_UnitTests
 			Assert::Fail();
 		}
 
-		TEST_METHOD(Should_Test_Moving_To_Valid_Space1)
+		TEST_METHOD(Should_Test_Moving_Robot_To_Valid_Position1)
 		{
 			// Setup
 			Position pos;
@@ -133,7 +133,7 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
-		TEST_METHOD(Should_Test_Moving_To_Valid_Space2)
+		TEST_METHOD(SShould_Test_Moving_Robot_To_Valid_Position2)
 		{
 			// Setup
 			Position pos;
@@ -155,6 +155,27 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.getPosition().x, pos.x + 1);
 			Assert::AreEqual(sut.getPosition().y, pos.y + 1);
 			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
+
+		TEST_METHOD(Should_Test_Moving_Robot_To_Invalid_Position1)
+		{
+			// Setup
+			Position pos;
+			pos.x = 0;
+			pos.y = 0;
+			Command command1 = { CommandType::PLACE, pos, FaceDirection::SOUTH };
+			Command command2 = { CommandType::MOVE, pos, FaceDirection::UNKNOWN };;
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command1);
+			sut.Execute(command2);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::SOUTH);
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
