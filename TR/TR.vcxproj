@@ -155,7 +155,6 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Robot.h" />
-    <ClInclude Include="Table.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Parser.cpp">
