@@ -13,6 +13,8 @@ namespace TR {
 
 	private:
 		vector<string> tokenizeString(const string &input, char delimiter);
+		FaceDirection mapFaceDirection(const string &input);
+		CommandType mapCommandType(const std::string &input);
 
 	public:
 		Command operator()(const string &input);

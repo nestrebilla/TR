@@ -14,7 +14,7 @@ namespace TR {
 		int y = UNKNOWN;
 	};
 
-	enum class CommandType { PLACE, MOVE, LEFT, RIGHT, REPORT };
+	enum class CommandType { UNKNOWN, PLACE, MOVE, LEFT, RIGHT, REPORT };
 
 	struct Command {
 		CommandType type;

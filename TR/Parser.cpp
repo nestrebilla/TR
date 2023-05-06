@@ -18,57 +18,95 @@ namespace TR {
 		return tokens;
 	}
 
-	Command Parser::operator()(const string &input) 
+	FaceDirection Parser::mapFaceDirection(const std::string &input)
 	{
-		CommandType command;
-		Position pos;
-		FaceDirection facedirection = FaceDirection::NORTH;
-
-		vector<string> inputTokens = tokenizeString(input, ' ');
-		string cmd = inputTokens[0];
-
-		if (cmd == "PLACE") {
-			command = CommandType::PLACE;
-
-			// Parse the PLACE command arguments
-			vector<string> placeAndDirectionInfo = tokenizeString(inputTokens[1], ',');
-			pos.x = stoi(placeAndDirectionInfo[0]);
-			pos.y = stoi(placeAndDirectionInfo[1]);
-			string dir_str = placeAndDirectionInfo[2];
-
-			if (dir_str == "NORTH") {
-				facedirection = FaceDirection::NORTH;
-			}
-			else if (dir_str == "EAST") {
-				facedirection = FaceDirection::EAST;
-			}
-			else if (dir_str == "SOUTH") {
-				facedirection = FaceDirection::SOUTH;
-			}
-			else if (dir_str == "WEST") {
-				facedirection = FaceDirection::WEST;
-			}
-			else {
-				throw std::invalid_argument("Invalid direction");
-			}
+		if (input == "NORTH") {
+			return FaceDirection::NORTH;
 		}
-		else if (cmd == "MOVE") {
-			command = CommandType::MOVE;
+		else if (input == "EAST") {
+			return FaceDirection::EAST;
 		}
-		else if (cmd == "LEFT") {
-			command = CommandType::LEFT;
+		else if (input == "SOUTH") {
+			return FaceDirection::SOUTH;
 		}
-		else if (cmd == "RIGHT") {
-			command = CommandType::RIGHT;
-		}
-		else if (cmd == "REPORT") {
-			command = CommandType::REPORT;
+		else if (input == "WEST") {
+			return FaceDirection::WEST;
 		}
 		else {
-			throw invalid_argument("Invalid command");
+			return FaceDirection::UNKNOWN;
+		}
+	}
+
+	CommandType Parser::mapCommandType(const std::string &input)
+	{
+		if (input == "PLACE") {
+			return CommandType::PLACE;
+		}
+		else if (input == "MOVE") {
+			return CommandType::MOVE;
+		}
+		else if (input == "LEFT") {
+			return CommandType::LEFT;
+		}
+		else if (input == "RIGHT") {
+			return CommandType::RIGHT;
+		}
+		else if (input == "REPORT") {
+			return CommandType::REPORT;
+		}
+		else {
+			return CommandType::UNKNOWN;
+		}
+	}
+
+	Command Parser::operator()(const string &input) 
+	{
+		CommandType command = CommandType::UNKNOWN;
+		Position pos;
+		FaceDirection faceDirection = FaceDirection::UNKNOWN;
+
+		vector<string> inputTokens = tokenizeString(input, ' ');
+
+		switch (mapCommandType(inputTokens[0])) {
+			case CommandType::PLACE:
+			{
+				command = CommandType::PLACE;
+
+				// Parse the PLACE command arguments
+				vector<string> placeAndDirectionInfo = tokenizeString(inputTokens[1], ',');
+				pos.x = stoi(placeAndDirectionInfo[0]);
+				pos.y = stoi(placeAndDirectionInfo[1]);
+				FaceDirection faceDir = mapFaceDirection(placeAndDirectionInfo[2]);
+
+				// Detect invalid PLACE command arguments
+				switch (faceDir) {
+				case FaceDirection::UNKNOWN:
+					throw std::invalid_argument("Invalid robot face direction");
+					break;
+				default:
+					faceDirection = faceDir;
+					break;
+				}
+			}
+				break;
+			case CommandType::MOVE:
+				command = CommandType::MOVE;
+				break;
+			case CommandType::LEFT:
+				command = CommandType::LEFT;
+				break;
+			case CommandType::RIGHT:
+				command = CommandType::RIGHT;
+				break;
+			case CommandType::REPORT:
+				command = CommandType::REPORT;
+				break;
+			default:
+				throw invalid_argument("Invalid command");
+				break;
 		}
 
-		return { command, pos, facedirection };
+		return { command, pos, faceDirection };
 	}
 
 } // namespace TR
