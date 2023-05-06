@@ -17,7 +17,7 @@ int main()
 	while (getline(cin, line)) {
 		try {
 			Command cmd = parser(line);
-			robot.execute(cmd);
+			robot.Execute(cmd);
 		}
 		catch (const exception &e) {
 			// Handle invalid commands gracefully

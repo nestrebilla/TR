@@ -61,7 +61,7 @@ namespace TR {
 
 	Command Parser::operator()(const string &input) 
 	{
-		CommandType command = CommandType::UNKNOWN;
+		CommandType commandType = CommandType::UNKNOWN;
 		Position pos;
 		FaceDirection faceDirection = FaceDirection::UNKNOWN;
 
@@ -70,7 +70,7 @@ namespace TR {
 		switch (mapCommandType(inputTokens[0])) {
 			case CommandType::PLACE:
 			{
-				command = CommandType::PLACE;
+				commandType = CommandType::PLACE;
 
 				// Parse the PLACE command arguments
 				vector<string> placeAndDirectionInfo = tokenizeString(inputTokens[1], ',');
@@ -90,23 +90,23 @@ namespace TR {
 			}
 				break;
 			case CommandType::MOVE:
-				command = CommandType::MOVE;
+				commandType = CommandType::MOVE;
 				break;
 			case CommandType::LEFT:
-				command = CommandType::LEFT;
+				commandType = CommandType::LEFT;
 				break;
 			case CommandType::RIGHT:
-				command = CommandType::RIGHT;
+				commandType = CommandType::RIGHT;
 				break;
 			case CommandType::REPORT:
-				command = CommandType::REPORT;
+				commandType = CommandType::REPORT;
 				break;
 			default:
 				throw invalid_argument("Invalid command");
 				break;
 		}
 
-		return { command, pos, faceDirection };
+		return { commandType, pos, faceDirection };
 	}
 
 } // namespace TR

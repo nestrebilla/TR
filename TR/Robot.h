@@ -17,15 +17,16 @@ namespace TR {
 		FaceDirection _facedir;
 		bool _placed;
 
-	public:
-		Robot() : _placed(false) {}
-
 		void place(int x, int y, FaceDirection dir);
 		void move();
 		void left();
 		void right();
 		void report() const;
-		void execute(Command cmd);
+
+	public:
+		Robot() : _placed(false) {}
+
+		void Execute(Command cmd);
 	};
 
 } // namespace TR
