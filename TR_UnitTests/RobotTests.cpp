@@ -112,5 +112,51 @@ namespace TR_UnitTests
 			Assert::Fail();
 		}
 
+		TEST_METHOD(Should_Test_Moving_To_Valid_Space1)
+		{
+			// Setup
+			Position pos;
+			pos.x = 0;
+			pos.y = 0;
+			Command command1 = { CommandType::PLACE, pos, FaceDirection::NORTH };
+			Command command2 = { CommandType::MOVE, pos, FaceDirection::NORTH };
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command1);
+			sut.Execute(command2);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
+
+		TEST_METHOD(Should_Test_Moving_To_Valid_Space2)
+		{
+			// Setup
+			Position pos;
+			pos.x = 0;
+			pos.y = 0;
+			Command command1 = { CommandType::PLACE, pos, FaceDirection::NORTH };
+			Command command2 = { CommandType::MOVE, pos, FaceDirection::UNKNOWN };
+			Command command3 = { CommandType::RIGHT, pos, FaceDirection::UNKNOWN };
+			Command command4 = { CommandType::MOVE, pos, FaceDirection::UNKNOWN };
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command1);
+			sut.Execute(command2);
+			sut.Execute(command3);
+			sut.Execute(command4);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x + 1);
+			Assert::AreEqual(sut.getPosition().y, pos.y + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
+
 	};
 }
