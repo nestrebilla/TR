@@ -6,7 +6,7 @@ namespace TR {
 	const int MAX_YLENGTH = 4;
 	const int MIN_YLENGTH = 0;
 
-	enum class FaceDirection { NORTH, EAST, SOUTH, WEST };
+	enum class FaceDirection { UNKNOWN, NORTH, EAST, SOUTH, WEST };
 
 	struct Position {
 		int x;

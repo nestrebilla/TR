@@ -2,14 +2,29 @@
 //
 
 #include "pch.h"
+#include "Robot.h" 
 #include <iostream>
+
+using namespace std;
+using namespace TR;
 
 int main()
 {
-	char key;
+	CommandParser parser;
+	Robot robot;
+	std::string line;
 
-    std::cout << "Hello World!\n"; 
-	std::cin >> key;
+	while (getline(std::cin, line)) {
+		try {
+			Command cmd = parser(line);
+			robot.execute(cmd);
+		}
+		catch (const std::exception &e) {
+			// Handle invalid commands gracefully
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+	}
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
