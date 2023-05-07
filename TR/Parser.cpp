@@ -59,6 +59,37 @@ namespace TR {
 		}
 	}
 
+	Command Parser::createPlaceCommand(const vector<string> &input)
+	{
+		CommandType commandType = CommandType::PLACE;
+		Position pos;
+		FaceDirection faceDirection = FaceDirection::UNKNOWN;
+
+		if (input.size() == 3)
+		{
+			pos.x = stoi(input[0]);
+			pos.y = stoi(input[1]);
+			faceDirection = mapFaceDirection(input[2]);
+
+			// Detect invalid Face Direction argument
+			if (faceDirection == FaceDirection::UNKNOWN)
+			{
+				throw std::invalid_argument("Invalid robot face direction");
+			}
+
+			if (pos.x < MIN_XLENGTH || pos.x > MAX_XLENGTH || pos.y < MIN_YLENGTH || pos.y > MAX_YLENGTH) {
+				throw invalid_argument("Invalid position");
+			}
+
+			return { commandType, pos, faceDirection };
+		}
+		else
+		{
+			// Detect invalid PLACE command arguments
+			throw std::invalid_argument("Invalid PLACE command arguments");
+		}
+	}
+
 	Command Parser::operator()(const string &input) 
 	{
 		CommandType commandType = CommandType::UNKNOWN;
@@ -67,27 +98,12 @@ namespace TR {
 
 		vector<string> inputTokens = tokenizeString(input, ' ');
 
-		switch (mapCommandType(inputTokens[0])) {
+		if (inputTokens.size() != 0)
+		{
+			switch (mapCommandType(inputTokens[0])) {
 			case CommandType::PLACE:
-			{
-				commandType = CommandType::PLACE;
-
 				// Parse the PLACE command arguments
-				vector<string> placeAndDirectionInfo = tokenizeString(inputTokens[1], ',');
-				pos.x = stoi(placeAndDirectionInfo[0]);
-				pos.y = stoi(placeAndDirectionInfo[1]);
-				FaceDirection faceDir = mapFaceDirection(placeAndDirectionInfo[2]);
-
-				// Detect invalid PLACE command arguments
-				switch (faceDir) {
-				case FaceDirection::UNKNOWN:
-					throw std::invalid_argument("Invalid robot face direction");
-					break;
-				default:
-					faceDirection = faceDir;
-					break;
-				}
-			}
+				return createPlaceCommand(tokenizeString(inputTokens[1], ','));
 				break;
 			case CommandType::MOVE:
 				commandType = CommandType::MOVE;
@@ -104,6 +120,7 @@ namespace TR {
 			default:
 				throw invalid_argument("Invalid command");
 				break;
+			}
 		}
 
 		return { commandType, pos, faceDirection };
