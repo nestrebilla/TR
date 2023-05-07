@@ -122,7 +122,7 @@ namespace TR_UnitTests
 			Assert::Fail();
 		}
 
-		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Invalid_Face_Direction)
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Invalid_Position_And_Face_Direction)
 		{
 			// Setup
 			string line = "PLACE -5,-1,jhdapopdsa";
@@ -136,7 +136,7 @@ namespace TR_UnitTests
 			catch (const std::exception& e)
 			{
 				// Assert
-				Assert::AreEqual(string("Invalid robot face direction"), string(e.what()));
+				Assert::AreEqual(string("Invalid position"), string(e.what()));
 				return;
 			}
 
@@ -221,6 +221,27 @@ namespace TR_UnitTests
 			{
 				// Assert
 				Assert::AreEqual(string("Empty position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Empty_FaceDirection)
+		{
+			// Setup
+			string line = "PLACE 0,0,";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid PLACE command arguments"), string(e.what()));
 				return;
 			}
 
