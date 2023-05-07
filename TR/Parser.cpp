@@ -122,9 +122,18 @@ namespace TR {
 		{
 			switch (mapCommandType(inputTokens[0])) {
 			case CommandType::PLACE:
+			{
 				// Parse the PLACE command arguments
-				return createPlaceCommand(tokenizeString(inputTokens[1], ','));
+				if (inputTokens.size() > 1)
+				{
+					return createPlaceCommand(tokenizeString(inputTokens[1], ','));
+				}
+				else
+				{
+					throw invalid_argument("Invalid PLACE command arguments");
+				}
 				break;
+			}
 			case CommandType::MOVE:
 				commandType = CommandType::MOVE;
 				break;

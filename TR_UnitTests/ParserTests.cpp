@@ -46,6 +46,28 @@ namespace TR_UnitTests
 
 		}
 
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_Without_Arguments)
+		{
+			// Setup
+			string line = "PLACE ";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid PLACE command arguments"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+
+		}
+
 		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Valid_Position_And_Face_Direction1)
 		{
 			// Setup
