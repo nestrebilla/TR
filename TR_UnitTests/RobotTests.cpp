@@ -179,5 +179,46 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
+		TEST_METHOD(Should_Test_Turning_Robot_Face_Direction_Left1)
+		{
+			// Setup
+			Position pos;
+			pos.x = 3;
+			pos.y = 2;
+			Command command1 = { CommandType::PLACE, pos, FaceDirection::SOUTH };
+			Command command2 = { CommandType::LEFT, pos, FaceDirection::UNKNOWN };;
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command1);
+			sut.Execute(command2);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
+
+		TEST_METHOD(Should_Test_Turning_Robot_Face_Direction_Left2)
+		{
+			// Setup
+			Position pos;
+			pos.x = 3;
+			pos.y = 2;
+			Command command1 = { CommandType::PLACE, pos, FaceDirection::EAST };
+			Command command2 = { CommandType::LEFT, pos, FaceDirection::UNKNOWN };
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(command1);
+			sut.Execute(command2);
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, pos.x);
+			Assert::AreEqual(sut.getPosition().y, pos.y);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
 	};
 }
