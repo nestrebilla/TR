@@ -242,7 +242,7 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
-		TEST_METHOD(Should_Test_Turning_Robot_Moving_From_Lower_Left_Corner_To_Upper_Right_Corner)
+		TEST_METHOD(Should_Test_Moving_Robot_From_Lower_Left_Corner_To_Upper_Right_Corner)
 		{
 			// Setup
 			Position pos;
