@@ -171,8 +171,37 @@ Output: 3,3,NORTH
 
 ![image](https://user-images.githubusercontent.com/57872874/236681814-7e97ee31-538c-449f-b890-6c2724970bd0.png)
 
+### Test Case 2a (Alternate path: MOVE to out-of-bound position)
 
-### Test Case 2 (Alternate path: invalid face direction)
+Input:
+
+PLACE 0,0,WEST
+
+MOVE
+
+REPORT
+
+Output: 0,0,WEST
+
+![image](https://user-images.githubusercontent.com/57872874/236682005-9ca40530-49b3-4f6a-a66a-f9a6eb71cd49.png)
+
+
+### Test Case 2b (Alternate path: MOVE to out-of-bound position)
+
+Input:
+
+PLACE 4,4,NORTH
+
+MOVE
+
+REPORT
+
+Output: 4,4,NORTH
+
+![image](https://user-images.githubusercontent.com/57872874/236682160-01eb4c4f-e79e-4f15-808d-c4a6d4c09e82.png)
+
+
+### Test Case 3 (Alternate path: invalid face direction)
 
 Input:
 
@@ -185,7 +214,7 @@ Error: Invalid robot face direction
 ![image](https://user-images.githubusercontent.com/57872874/236680794-bcb49076-eb15-4f6f-93e5-fb96e210465f.png)
 
 
-### Test Case 3 (Alternate path: invalid/out-of-bounds position coordinates)
+### Test Case 4 (Alternate path: invalid/out-of-bounds position coordinates)
 
 Input:
 
