@@ -242,6 +242,148 @@ namespace TR_UnitTests
 			Assert::AreEqual(sut.isPlaced(), true);
 		}
 
+		TEST_METHOD(Should_Test_Turning_Robot_Moving_From_Lower_Left_Corner_To_Upper_Right_Corner)
+		{
+			// Setup
+			Position pos;
+			pos.x = MIN_XLENGTH;
+			pos.y = MIN_YLENGTH;
+			Command placeCommand = { CommandType::PLACE, pos, FaceDirection::EAST };
+			Command leftCommand = { CommandType::LEFT, pos, FaceDirection::UNKNOWN };
+			Command rightCommand = { CommandType::RIGHT, pos, FaceDirection::UNKNOWN };
+			Command moveCommand = { CommandType::MOVE, pos, FaceDirection::UNKNOWN };
+
+			// Define and run SUT
+			Robot sut;
+			sut.Execute(placeCommand); //Position: 0,0; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 1,0; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH+1);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(leftCommand); //Position: 1,0; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 1);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 1,1; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 1);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(rightCommand); //Position: 1,1; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 1);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 2,1; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 2);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(leftCommand); //Position: 2,1; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 2);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 1);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 2,2; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 2);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 2);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(rightCommand); //Position: 2,2; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 2);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 2);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 3,2; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 3);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 2);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(leftCommand); //Position: 3,2; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 3);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 2);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 3,3; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 3);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 3);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(rightCommand); //Position: 3,3; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MIN_XLENGTH + 3);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 3);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 4,3; FaceDirection: EAST
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MAX_XLENGTH);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 3);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::EAST);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(leftCommand); //Position: 4,3; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MAX_XLENGTH);
+			Assert::AreEqual(sut.getPosition().y, MIN_YLENGTH + 3);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+
+			sut.Execute(moveCommand); //Position: 4,4; FaceDirection: NORTH
+
+			// Assert
+			Assert::AreEqual(sut.getPosition().x, MAX_XLENGTH);
+			Assert::AreEqual(sut.getPosition().y, MAX_YLENGTH);
+			Assert::AreEqual(sut.getFaceDirection(), FaceDirection::NORTH);
+			Assert::AreEqual(sut.isPlaced(), true);
+		}
+
 		TEST_METHOD(Should_Test_Turning_Robot_Face_Direction_Right2)
 		{
 			// Setup
