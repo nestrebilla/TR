@@ -30,6 +30,15 @@ Go to File > Open > Project/Solution. Right-click TR.sln and click Open.
 
 ![image](https://user-images.githubusercontent.com/57872874/236678287-a01d716f-e472-4548-9535-085e938da34c.png)
 
+### 3. Build TR.sln Solution
+
+Select the Configuration (Release or Debug) and Target Platform (x86 or x64).
+
+![image](https://user-images.githubusercontent.com/57872874/236678649-219d7de6-3124-4760-b17f-2dbfe1a5e863.png)
+
+On the Solution Explorer Window, right-click on "Solution 'TR'" and click Build Solution.
+![image](https://user-images.githubusercontent.com/57872874/236678749-89c01ab7-76ac-48b7-bf9b-f5bd0dfda148.png)
+
 
 ## Using TR 
 
