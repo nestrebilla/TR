@@ -88,3 +88,8 @@ A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and 
 
 
 ## Running TR Unit Tests
+
+On MS Visual Studio, go to Test > Run > All Tests.
+
+![image](https://user-images.githubusercontent.com/57872874/236680250-af538eff-5096-41e0-b3a3-e0211ba02cec.png)
+
