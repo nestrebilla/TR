@@ -77,5 +77,14 @@ LEFT and RIGHT will rotate the robot 90 degrees in the specified direction witho
 
 ![image](https://user-images.githubusercontent.com/57872874/236679937-8035e65c-56bd-4d24-85be-c82c4b37225a.png)
 
+### REPORT
+
+REPORT will announce the X,Y and F of the robot.
+
+![image](https://user-images.githubusercontent.com/57872874/236680092-04d3717a-3615-4193-92cf-298b415ac708.png)
+
+A robot that is not on the table can choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
+
+
 
 ## Running TR Unit Tests
