@@ -19,6 +19,12 @@ This is the Toy Robot Coding Challenge C++ 2023. The requirements are in the fil
 
 ## Building TR
 
+### 1. Clone github repository
+       https://github.com/nestrebilla/TR.git
+
+![image](https://user-images.githubusercontent.com/57872874/236677885-0cbd23af-c2b2-43fa-8e46-8835095ef482.png)
+
+
 ## Using TR 
 
 ## Running TR Unit Tests
