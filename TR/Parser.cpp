@@ -70,17 +70,26 @@ namespace TR {
 			// Detect empty position information input
 			if (!input[0].empty() && !input[1].empty())
 			{
-				pos.x = stoi(input[0]);
-				pos.y = stoi(input[1]);
+				// Detect non-integer position 
+				try
+				{
+					pos.x = stoi(input[0]);
+					pos.y = stoi(input[1]);	
+				}
+				catch (const std::exception& e)
+				{
+					throw invalid_argument("Invalid non-integer position information provided");
+				}
 
 				// Detect invalid position
 				if (pos.x < MIN_XLENGTH || pos.x > MAX_XLENGTH || pos.y < MIN_YLENGTH || pos.y > MAX_YLENGTH) {
 					throw invalid_argument("Invalid position");
 				}
+				
 			}
 			else
 			{
-				throw std::invalid_argument("Empty position information provided");
+				throw invalid_argument("Empty position information provided");
 			}
 
 			// Map Face Direction argument to corresponding FaceDirection enum
@@ -89,7 +98,7 @@ namespace TR {
 			//Detect invalid Face Direction argument
 			if (faceDirection == FaceDirection::UNKNOWN)
 			{
-				throw std::invalid_argument("Invalid robot face direction");
+				throw invalid_argument("Invalid robot face direction");
 			}
 
 			return { commandType, pos, faceDirection };
@@ -97,7 +106,7 @@ namespace TR {
 		else
 		{
 			// Detect invalid PLACE command arguments
-			throw std::invalid_argument("Invalid PLACE command arguments");
+			throw invalid_argument("Invalid PLACE command arguments");
 		}
 	}
 

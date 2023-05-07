@@ -248,6 +248,48 @@ namespace TR_UnitTests
 			Assert::Fail();
 		}
 
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Non_Integer_Position1)
+		{
+			// Setup
+			string line = "PLACE @,^,NORTH";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid non-integer position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Non_Integer_Position2)
+		{
+			// Setup
+			string line = "PLACE a,z,NORTH";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Invalid non-integer position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
 		TEST_METHOD(Should_Test_Parser_Parsing_Move_Command)
 		{
 			// Setup
@@ -293,6 +335,23 @@ namespace TR_UnitTests
 
 			// Assert
 			Assert::AreEqual(command.type, CommandType::RIGHT);
+			Assert::AreEqual(command.pos.x, UNKNOWN_POSITION);
+			Assert::AreEqual(command.pos.y, UNKNOWN_POSITION);
+			Assert::AreEqual(command.dir, FaceDirection::UNKNOWN);
+
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Report_Command)
+		{
+			// Setup
+			string line = "REPORT";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::REPORT);
 			Assert::AreEqual(command.pos.x, UNKNOWN_POSITION);
 			Assert::AreEqual(command.pos.y, UNKNOWN_POSITION);
 			Assert::AreEqual(command.dir, FaceDirection::UNKNOWN);
