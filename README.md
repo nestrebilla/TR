@@ -253,3 +253,37 @@ Error: Invalid PLACE command arguments
 ![image](https://user-images.githubusercontent.com/57872874/236683570-5f9094d1-425e-4246-8927-81234e16c76b.png)
 
 
+### Test Case 7 (Alternate path: Valid commands after entering invalid commands)
+
+Input:
+
+PLACE
+
+_Error: Invalid PLACE command arguments_
+
+PLACE 1,2,EAST
+
+MO
+
+_Error: Invalid command_
+
+MOVE
+
+g
+
+_Error: Invalid command_
+
+45
+
+_Error: Invalid command_
+
+MOVE
+
+LEFT
+
+REPORT
+
+Output: 3,2,NORTH
+
+![image](https://user-images.githubusercontent.com/57872874/236683866-1b0de8e5-9dd8-4ba1-aebc-ec34ceca70d6.png)
+
