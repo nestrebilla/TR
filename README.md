@@ -93,3 +93,6 @@ On MS Visual Studio, go to Test > Run > All Tests.
 
 ![image](https://user-images.githubusercontent.com/57872874/236680250-af538eff-5096-41e0-b3a3-e0211ba02cec.png)
 
+Test results will be shown on the Test Explorer window.
+
+![image](https://user-images.githubusercontent.com/57872874/236680306-9ae09573-f38d-4782-ae84-d9b30b076d66.png)
