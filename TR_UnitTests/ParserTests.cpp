@@ -247,5 +247,56 @@ namespace TR_UnitTests
 
 			Assert::Fail();
 		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Move_Command)
+		{
+			// Setup
+			string line = "MOVE";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::MOVE);
+			Assert::AreEqual(command.pos.x, UNKNOWN_POSITION);
+			Assert::AreEqual(command.pos.y, UNKNOWN_POSITION);
+			Assert::AreEqual(command.dir, FaceDirection::UNKNOWN);
+
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Left_Command)
+		{
+			// Setup
+			string line = "LEFT";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::LEFT);
+			Assert::AreEqual(command.pos.x, UNKNOWN_POSITION);
+			Assert::AreEqual(command.pos.y, UNKNOWN_POSITION);
+			Assert::AreEqual(command.dir, FaceDirection::UNKNOWN);
+
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Right_Command)
+		{
+			// Setup
+			string line = "RIGHT";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::RIGHT);
+			Assert::AreEqual(command.pos.x, UNKNOWN_POSITION);
+			Assert::AreEqual(command.pos.y, UNKNOWN_POSITION);
+			Assert::AreEqual(command.dir, FaceDirection::UNKNOWN);
+
+		}
 	};
 }
