@@ -133,3 +133,16 @@ Error: Invalid robot face direction
 
 ![image](https://user-images.githubusercontent.com/57872874/236680794-bcb49076-eb15-4f6f-93e5-fb96e210465f.png)
 
+
+### Test Case 3 (Alternate path: invalid/out-of-bounds position coordinates)
+
+Input:
+
+PLACE 5,-1,NORTH
+
+Output:
+
+Error: Invalid position
+
+![image](https://user-images.githubusercontent.com/57872874/236680940-a1ff36c9-ef0d-4929-8067-27d6bae4a579.png)
+
