@@ -63,6 +63,19 @@ PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUT
 
 ![image](https://user-images.githubusercontent.com/57872874/236679743-9995a5c8-c891-4524-9ef1-9c0ed021ce0e.png)
 
+The origin (0,0) can be considered to be the SOUTH WEST most corner. It is required that the first command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application should discard all commands in the sequence until a valid PLACE command has been executed.
+
+### MOVE
+
+MOVE will move the toy robot one unit forward in the direction it is currently facing.
+
+![image](https://user-images.githubusercontent.com/57872874/236679865-1a5c273d-39b8-4b86-b091-80c01ee4ec3f.png)
+
+### LEFT and RIGHT
+
+LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
+
+![image](https://user-images.githubusercontent.com/57872874/236679937-8035e65c-56bd-4d24-85be-c82c4b37225a.png)
 
 
 ## Running TR Unit Tests
