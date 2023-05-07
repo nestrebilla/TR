@@ -4,6 +4,8 @@
 
 This project is based on the Toy Robot Coding Challenge C++ 2023 by. The requirements of the project are in the file: **Toy Robot Code Challenge C++ 2023.pdf**
 
+In summary, the application is a simulation of a toy robot moving on a square table top, of dimensions 5 units x 5 units. There are no other obstructions on the table surface. The robot is free to roam around the surface of the table, but must be prevented from falling to destruction. Any movement that would result in the robot falling from the table must be prevented, however further valid movement commands must still be allowed.
+
 ## Pre-requisites
 
 **IDE (Integrated Development Environment)**: Microsoft Visual Studio Professional 2017 Version 15.9.16
@@ -54,6 +56,12 @@ The application can read commands of the following form:
 3. LEFT
 4. RIGHT
 5. REPORT
+
+### PLACE X,Y,F
+
+PLACE will put the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST.
+
+![image](https://user-images.githubusercontent.com/57872874/236679743-9995a5c8-c891-4524-9ef1-9c0ed021ce0e.png)
 
 
 
