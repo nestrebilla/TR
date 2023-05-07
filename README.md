@@ -39,11 +39,22 @@ Select the Configuration (Release or Debug) and Target Platform (x86 or x64).
 On the Solution Explorer Window, right-click on "Solution 'TR'" and click Build Solution.
 ![image](https://user-images.githubusercontent.com/57872874/236678749-89c01ab7-76ac-48b7-bf9b-f5bd0dfda148.png)
 
-Output files are located in the '$(SolutionDir)$(Configuration)\' directory.
+Output files are located in the '{_SolutionDir_}\\{_Configuration_}' directory.
 
 ![image](https://user-images.githubusercontent.com/57872874/236678986-b530e6b9-20b0-4206-b966-51c904ae8a80.png)
 
 
 ## Using TR 
+
+After building the solution (TR.sln), go to the output directory '{_SolutionDir_}\\{_Configuration_}' and run TR.exe.
+
+The application can read commands of the following form:
+1. PLACE X,Y,F
+2. MOVE
+3. LEFT
+4. RIGHT
+5. REPORT
+
+
 
 ## Running TR Unit Tests
