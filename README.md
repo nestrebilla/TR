@@ -226,6 +226,7 @@ Error: Invalid position
 
 ![image](https://user-images.githubusercontent.com/57872874/236680940-a1ff36c9-ef0d-4929-8067-27d6bae4a579.png)
 
+
 ### Test Case 5 (Alternate path: PLACE without arguments)
 
 Input:
@@ -237,5 +238,18 @@ Output:
 Error: Invalid PLACE command arguments
 
 ![image](https://user-images.githubusercontent.com/57872874/236683361-2b0e3acf-8639-4a6a-93fb-c9230da46967.png)
+
+
+### Test Case 6 (Alternate path: PLACE with empty arguments)
+
+Input:
+
+PLACE ,,
+
+Output:
+
+Error: Invalid PLACE command arguments
+
+![image](https://user-images.githubusercontent.com/57872874/236683570-5f9094d1-425e-4246-8927-81234e16c76b.png)
 
 
