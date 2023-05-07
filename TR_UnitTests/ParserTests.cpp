@@ -46,5 +46,54 @@ namespace TR_UnitTests
 
 		}
 
+		TEST_METHOD(Should_Test_Placing_Robot_In_Valid_Position2)
+		{
+			// Setup
+			string line = "PLACE 2,4,EAST";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::PLACE);
+			Assert::AreEqual(command.pos.x, 2);
+			Assert::AreEqual(command.pos.y, 4);
+			Assert::AreEqual(command.dir, FaceDirection::EAST);
+
+		}
+
+		TEST_METHOD(Should_Test_Placing_Robot_In_Invalid_Position1)
+		{
+			// Setup
+			string line = "PLACE 5,5,WEST";	
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::PLACE);
+			Assert::AreEqual(command.pos.x, 5);
+			Assert::AreEqual(command.pos.y, 5);
+			Assert::AreEqual(command.dir, FaceDirection::WEST);
+		}
+
+		TEST_METHOD(Should_Test_Placing_Robot_In_Invalid_Position2)
+		{
+			// Setup
+			string line = "PLACE -5,-1,SOUTH";
+
+			// Define and run SUT
+			Parser sut;
+			Command command = sut(line);
+
+			// Assert
+			Assert::AreEqual(command.type, CommandType::PLACE);
+			Assert::AreEqual(command.pos.x, -5);
+			Assert::AreEqual(command.pos.y, -1);
+			Assert::AreEqual(command.dir, FaceDirection::SOUTH);
+		}
+
 	};
 }
