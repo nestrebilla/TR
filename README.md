@@ -96,3 +96,29 @@ On MS Visual Studio, go to Test > Run > All Tests.
 Test results will be shown on the Test Explorer window.
 
 ![image](https://user-images.githubusercontent.com/57872874/236680306-9ae09573-f38d-4782-ae84-d9b30b076d66.png)
+
+
+## Test Data
+
+### Test Case 1 (Happy path)
+
+Input:
+
+PLACE 0,0,NORTH
+
+MOVE
+
+RIGHT
+
+MOVE
+
+LEFT
+
+REPORT
+
+Output: 1,1,NORTH
+
+![image](https://user-images.githubusercontent.com/57872874/236680626-96c175b4-b8dc-4ab2-975b-fafa02358fb8.png)
+
+
+
