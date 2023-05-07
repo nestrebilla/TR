@@ -2,7 +2,7 @@
 
 ## Overview and Requirements
 
-This is the Toy Robot Coding Challenge C++ 2023. The requirements are in the file: **Toy Robot Code Challenge C++ 2023.pdf**
+This project is based on the Toy Robot Coding Challenge C++ 2023 by. The requirements of the project are in the file: **Toy Robot Code Challenge C++ 2023.pdf**
 
 ## Pre-requisites
 
