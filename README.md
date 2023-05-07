@@ -121,4 +121,15 @@ Output: 1,1,NORTH
 ![image](https://user-images.githubusercontent.com/57872874/236680626-96c175b4-b8dc-4ab2-975b-fafa02358fb8.png)
 
 
+### Test Case 2 (Alternate path: invalid face direction)
+
+Input:
+
+PLACE 0,0,fdsfs
+
+Output:
+
+Error: Invalid robot face direction
+
+![image](https://user-images.githubusercontent.com/57872874/236680794-bcb49076-eb15-4f6f-93e5-fb96e210465f.png)
 
