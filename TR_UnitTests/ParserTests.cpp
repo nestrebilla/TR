@@ -163,5 +163,68 @@ namespace TR_UnitTests
 
 			Assert::Fail();
 		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Empty_Position1)
+		{
+			// Setup
+			string line = "PLACE ,,NORTH";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Empty position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Empty_Position2)
+		{
+			// Setup
+			string line = "PLACE ,0,NORTH";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Empty position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
+
+		TEST_METHOD(Should_Test_Parser_Parsing_Place_Command_With_Empty_Position3)
+		{
+			// Setup
+			string line = "PLACE 0,,NORTH";
+
+			try
+			{
+				// Define and run SUT
+				Parser sut;
+				Command command = sut(line);
+			}
+			catch (const std::exception& e)
+			{
+				// Assert
+				Assert::AreEqual(string("Empty position information provided"), string(e.what()));
+				return;
+			}
+
+			Assert::Fail();
+		}
 	};
 }

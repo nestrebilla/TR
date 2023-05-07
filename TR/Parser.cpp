@@ -67,8 +67,16 @@ namespace TR {
 
 		if (input.size() == 3)
 		{
-			pos.x = stoi(input[0]);
-			pos.y = stoi(input[1]);
+			if (!input[0].empty() && !input[1].empty())
+			{
+				pos.x = stoi(input[0]);
+				pos.y = stoi(input[1]);
+			}
+			else
+			{
+				throw std::invalid_argument("Empty position information provided");
+			}
+
 			faceDirection = mapFaceDirection(input[2]);
 
 			// Detect invalid Face Direction argument
