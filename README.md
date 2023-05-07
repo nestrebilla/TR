@@ -24,6 +24,12 @@ This is the Toy Robot Coding Challenge C++ 2023. The requirements are in the fil
 
 ![image](https://user-images.githubusercontent.com/57872874/236677885-0cbd23af-c2b2-43fa-8e46-8835095ef482.png)
 
+### 2. Open TR.sln via MS Visual Studio
+
+Go to File > Open > Project/Solution. Right-click TR.sln and click Open.
+
+![image](https://user-images.githubusercontent.com/57872874/236678287-a01d716f-e472-4548-9535-085e938da34c.png)
+
 
 ## Using TR 
 
