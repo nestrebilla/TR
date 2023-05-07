@@ -100,7 +100,7 @@ Test results will be shown on the Test Explorer window.
 
 ## Test Data
 
-### Test Case 1a (Happy path)
+### Test Case 1a (Happy path - MOVE and LEFT/RIGHT)
 
 Input:
 
@@ -121,7 +121,7 @@ Output: 1,1,NORTH
 ![image](https://user-images.githubusercontent.com/57872874/236680626-96c175b4-b8dc-4ab2-975b-fafa02358fb8.png)
 
 
-### Test Case 1b (Happy path - MOVE)
+### Test Case 1b (Happy path - MOVE to valid position)
 
 Input:
 
@@ -136,7 +136,7 @@ Output: 0,1,NORTH
 ![image](https://user-images.githubusercontent.com/57872874/236681105-0f21aabe-31a6-4cdc-bca3-c50a630824ce.png)
 
 
-### Test Case 1c (Happy path - LEFT)
+### Test Case 1c (Happy path - turn LEFT)
 
 Input:
 
@@ -149,6 +149,27 @@ REPORT
 Output: 0,0,WEST
 
 ![image](https://user-images.githubusercontent.com/57872874/236681556-76c3f7be-9be7-4c30-b8cc-f1541fb40467.png)
+
+
+### Test Case 1d (Happy path - MOVE and LEFT/RIGHT)
+
+Input:
+
+PLACE 1,2,EAST
+
+MOVE
+
+MOVE
+
+LEFT
+
+MOVE
+
+REPORT
+
+Output: 3,3,NORTH
+
+![image](https://user-images.githubusercontent.com/57872874/236681814-7e97ee31-538c-449f-b890-6c2724970bd0.png)
 
 
 ### Test Case 2 (Alternate path: invalid face direction)
